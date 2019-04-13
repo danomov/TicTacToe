@@ -31,7 +31,8 @@ body {
 
 .board-container {
     height: 100%;
-    width: 100%
+    width: 100%;
+    margin-bottom: 40px;
 }
 
 .board {
