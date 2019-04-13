@@ -59,14 +59,14 @@ const move = () => {
     if(winIndex){
         divs[winIndex].innerHTML = 'O';
         experimentalMoves[winIndex] = 'O';
-        arrayOfMoves.splice(winIndex, 1);
+        arrayOfMoves.splice(arrayOfMoves.indexOf(winIndex), 1);
         winIndex = '';
         win()
     } 
     else if(loseIndex){
         divs[loseIndex].innerHTML = 'O';
         experimentalMoves[loseIndex] = 'O';
-        arrayOfMoves.splice(loseIndex, 1);
+        arrayOfMoves.splice(arrayOfMoves.indexOf(loseIndex), 1);
         loseIndex = '';
         win();
     }
@@ -112,7 +112,12 @@ const expWin = () => {
 
 //This is for checking win after doing a move
 const win = () => {
-    if(divs[0].innerHTML === divs[3].innerHTML && divs[3].innerHTML === divs[6].innerHTML && looker(divs[0].innerHTML)){
+    if(!arrayOfMoves[0]){
+        alert('DRAW');
+        reset();
+        return true;
+    }
+    else if(divs[0].innerHTML === divs[3].innerHTML && divs[3].innerHTML === divs[6].innerHTML && looker(divs[0].innerHTML)){
         congrats(divs[0].innerHTML);
         return true;
     }
